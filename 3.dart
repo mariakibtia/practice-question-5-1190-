@@ -1,6 +1,7 @@
-import 'dart:io';
+enum Gender { male, female, others }
 
 void main() {
-  var currentDir = Directory.current;
-  print('Current working directory: ${currentDir.path}');
+  for (var g in Gender.values) {
+    print(g);
+  }
 }

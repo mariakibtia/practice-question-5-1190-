@@ -1,7 +1,22 @@
-import 'dart:io';
+class Animal {
+  int id;
+  String name;
+  String color;
 
-void main() async {
-  var sourceFile = File('hello.txt');
-  var destinationFile = await sourceFile.copy('hello_copy.txt');
-  print('File copied to ${destinationFile.path}');
+  Animal(this.id, this.name, this.color);
+}
+
+class Cat extends Animal {
+  String sound;
+
+  Cat(int id, String name, String color, this.sound) : super(id, name, color);
+
+  void display() {
+    print('ID: $id, Name: $name, Color: $color, Sound: $sound');
+  }
+}
+
+void main() {
+  var cat = Cat(1, 'Tom', 'Gray', 'Meow');
+  cat.display();
 }

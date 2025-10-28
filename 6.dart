@@ -1,12 +1,19 @@
-import 'dart:io';
+abstract class Bottle {
+  void open();
 
-void main() async {
-  var file = File('hello_copy.txt');
-
-  if (await file.exists()) {
-    await file.delete();
-    print('hello_copy.txt deleted successfully');
-  } else {
-    print('File does not exist');
+  factory Bottle() {
+    return CokeBottle();
   }
+}
+
+class CokeBottle implements Bottle {
+  @override
+  void open() {
+    print('Coke bottle is opened');
+  }
+}
+
+void main() {
+  Bottle bottle = Bottle(); // Using factory constructor
+  bottle.open();
 }

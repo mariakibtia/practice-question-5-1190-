@@ -1,13 +1,19 @@
-import 'dart:io';
+abstract class Bottle {
+  void open();
 
-void main() async {
-  var file = File('students.csv');
+  factory Bottle() {
+    return CokeBottle();
+  }
+}
 
-  await file.writeAsString('Name,Age,Address\n');
-  await file.writeAsString('Maria,23,Sylhet\n', mode: FileMode.append);
-  await file.writeAsString('Bonna,20,Sylhet\n', mode: FileMode.append);
+class CokeBottle implements Bottle {
+  @override
+  void open() {
+    print('Coke bottle is opened');
+  }
+}
 
-  print('Data written to students.csv');
-  var contents = await file.readAsString();
-  print('\nContents of students.csv:\n$contents');
+void main() {
+  Bottle bottle = Bottle(); // Using factory constructor
+  bottle.open();
 }
